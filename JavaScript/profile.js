@@ -8,13 +8,13 @@ userName.innerHTML = welcome;
 //Hente alle poster - method: GET
 // Endpoints
 const API_BASE_URL = "https://nf-api.onrender.com";
-const allPostsEndpoint = `/api/v1/social/profiles/${welcome}?_posts=true`;
+const myPostsEndpoint = `/api/v1/social/profiles/${welcome}?_posts=true`;
 
 
-const getAllPostsURL = `${API_BASE_URL}${allPostsEndpoint}`;
+const getMyPostsURL = `${API_BASE_URL}${myPostsEndpoint}`;
 //let posts = [];
 
-async function getAllPosts (url) {
+async function getMyPosts (url) {
     try {
         const accessToken = localStorage.getItem('accessToken'); 
         const options = {
@@ -27,26 +27,28 @@ async function getAllPosts (url) {
 
         const response = await fetch(url, options); 
         console.log(response);
-        const posts = await response.json();
-        console.log("Posts:", posts);
+        const profile = await response.json()
+        console.log("Profil: ", profile)
+        console.log("Profil > navn: ", profile.name)
+        console.log("Profil > epost: ", profile.email)
+        console.log("Posts:", profile.posts);
         listData(posts, outElement)
     } catch(error) {
         console.warn(error);
     }
 }   
 
-getAllPosts(getAllPostsURL);
+getMyPosts(getMyPostsURL);
 
 const outElement = document.getElementById("post-container");
 
-//Liste ut alle poster på html siden
+//Liste ut mine poster på html siden
 function listData(list, out){
     //console.log ("List:", list);
     out.innerHTML = "";
     let newDivs = "";
 
     for (let post of list) {
-        //console.log(card);
         const delBtn = `<button class="btnDelete btn btn-outline-primary" data-delete="${post.id}">DELETE</button>`;
         const updateBtn = `<button class="btnUpdate btn btn-primary text-white" data-update="${post.id}">UPDATE</button>`;
         newDivs += `<div class="col mb-5">
@@ -138,7 +140,7 @@ const submitPost = document.getElementById("submitPost");
 
 
 //Create a new post - method: POST
-const createPost = `${API_BASE_URL}${allPostsEndpoint}`;
+const createPost = `${API_BASE_URL}${myPostsEndpoint}`;
 
 async function createNewPost (url, data) {
     const postData = {

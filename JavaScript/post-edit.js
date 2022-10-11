@@ -69,9 +69,8 @@ async function updatePost (id) {
 
     if (editMedia.value != "") {
         const media = editMedia.value;
-        data["media"] = media;
     } else {
-        delete data["media"];
+        delete media;
     }
 
 

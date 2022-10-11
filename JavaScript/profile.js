@@ -53,7 +53,7 @@ function listData(list, out){
     for (let post of list) {
         //console.log("Post: ", post);
         const delBtn = `<button class="btnDelete btn btn-outline-primary" data-delete="${post.id}">DELETE</button>`;
-        const updateBtn = `<button class="btnUpdate btn btn-primary text-white" data-update="${post.id}">UPDATE</button>`;
+        const updateBtn = `<button class="btnUpdate btn btn-primary text-white mt-2" data-update="${post.id}">UPDATE</button>`;
         newDivs += `<div class="col mb-5">
                <div class="card h-100">
                   <div class="card-body p-4">

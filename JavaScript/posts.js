@@ -70,6 +70,9 @@ function listData(list, out){
                         ${localStorage.getItem('username') === post.author.name ? delBtn : ""}
                         ${localStorage.getItem('username') === post.author.name ? updateBtn : ""}
                      </div>
+                     <div class="justify-content-start w-25">
+                        <a href=""><img src="comment-icon.png" alt="comment-icon"></a>
+                     </div>
                </div>
             </div>
           </div>

@@ -68,10 +68,8 @@ async function updatePost (id) {
     };
 
     if (editMedia.value != "") {
-        const media = editMedia.value;
-    } else {
-        delete media;
-    }
+      delete editMedia;  
+    } 
 
 
     console.log("Input data:", data);

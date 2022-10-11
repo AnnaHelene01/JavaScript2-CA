@@ -104,7 +104,7 @@ function listData(list, out){
                 window.location =`./post-edit.html?id=${updateId}`;
             })
 }
-
+}
 
 // DELETE POST
 const deleteEndPoint = '/api/v1/social/posts/'; 
@@ -180,7 +180,6 @@ submitPost.addEventListener("click", () => {
     
        createNewPost(createPost);
 });
-
 
 
 

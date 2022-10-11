@@ -32,7 +32,8 @@ async function getMyPosts (url) {
         console.log("Profil > navn: ", profile.name)
         console.log("Profil > epost: ", profile.email)
         console.log("Posts:", profile.posts);
-        listData(posts, outElement)
+        const myOwnPosts = profile.posts
+        listData(myOwnPosts, outElement)
     } catch(error) {
         console.warn(error);
     }
@@ -44,11 +45,13 @@ const outElement = document.getElementById("post-container");
 
 //Liste ut mine poster på html siden
 function listData(list, out){
-    //console.log ("List:", list);
+    console.log("List: ", list)
+    console.log("Out: ", out)
     out.innerHTML = "";
     let newDivs = "";
 
     for (let post of list) {
+        console.log("Post: ", post);
         const delBtn = `<button class="btnDelete btn btn-outline-primary" data-delete="${post.id}">DELETE</button>`;
         const updateBtn = `<button class="btnUpdate btn btn-primary text-white" data-update="${post.id}">UPDATE</button>`;
         newDivs += `<div class="col mb-5">
@@ -57,7 +60,7 @@ function listData(list, out){
                       <div class="text-center">
                         <div class="d-flex">
                            <div class="col-6">
-                             <p><strong>@${post.author.name}</strong></p>
+                             <p><strong>@${post.owner}</strong></p>
                            </div>
                            <div class="col-6">
                              <p>${post.created}</p>
@@ -76,9 +79,9 @@ function listData(list, out){
           </div>
         </div>`;
     }
-    //if (${localStorage.getItem('username') === post.author.name}) {
+    //if (${localStorage.getItem('username') === post.author.name}) { }
         out.innerHTML = newDivs;
-    }
+
 
         //Delete posts
         const btns = document.querySelectorAll("button.btnDelete");

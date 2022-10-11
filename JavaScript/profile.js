@@ -5,13 +5,10 @@ const userName = document.getElementById('user-name');
 
 userName.innerHTML = welcome;
 
-let params = new URLSearchParams(document.location.search);
-let name = params.get("name"); 
-
 //Hente alle poster - method: GET
 // Endpoints
 const API_BASE_URL = "https://nf-api.onrender.com";
-const allPostsEndpoint = `/api/v1/social/profiles/${name}?_posts=true`;
+const allPostsEndpoint = `/api/v1/social/profiles/${welcome}?_posts=true`;
 
 
 const getAllPostsURL = `${API_BASE_URL}${allPostsEndpoint}`;

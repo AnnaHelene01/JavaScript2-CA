@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page for social application</title>
+    <link href="./css/style.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./JavaScript/explore.js" defer></script>
+</head>
+<style>
+    .user-icon {
+      width: 50px;
+      height: 50px;
+    }
+   </style>
+<body>
+    <header> 
+        <nav class="navbar navbar-expand-lg bg-primary">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="index.html">LOGO</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="main.html">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="profile.html">Profile</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="index.html">Login Out</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="explore.html">Explore profiles</a>
+                  </li>
+                </ul>
+                <form class="d-flex" role="search">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn text-white border" type="submit">Search</button>
+                </form>
+              </div>
+            </div>
+          </nav>
+    </header>
+    <p class="display-5 text-center mt-6">Explore users!</p>   
+    <div class="d-flex">
+      <p>Trying to filter:</p>
+      <input id="queryString" class=""/>
+    </div> 
+    <section class="py-5">
+      <div class="container px-4 px-lg-5 mt-1">
+          <div class="row gx-4 gx-lg-5 row-cols-1 row-cols-md-2 row-cols-xl-2 justify-content-center" id="post-container">
+              <div class="col mb-5">
+                  <div class="card h-100">
+                      <div class="card-body p-4">
+                          <div class="text-center">
+                            <h5 class="fw-bolder">Post USER</h5>
+                              <h5 class="fw-bolder">Post TITLE</h5>
+                              <p>Post content</p>
+                              <a href="shop-detail.html"><p>Click to read more</p></a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col mb-5">
+                  <div class="card h-100">
+                      <div class="card-body p-4">
+                          <div class="text-center">
+                            <h5 class="fw-bolder">Post USER</h5>
+                              <h5 class="fw-bolder">Post TITLE</h5>
+                              <p>Post content</p>
+                              <a href="shop-detail.html"><p>Click to read more</p></a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col mb-5">
+                  <div class="card h-100">
+                      <div class="card-body p-4">
+                          <div class="text-center">
+                            <h5 class="fw-bolder">Post USER</h5>
+                              <h5 class="fw-bolder">Post TITLE</h5>
+                              <p>Post content</p>  
+                              <a href="shop-detail.html"><p>Click to read more</p></a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col mb-5">
+                  <div class="card h-100">
+                      <div class="card-body p-4">
+                          <div class="text-center">
+                            <h5 class="fw-bolder">Post USER</h5>
+                              <h5 class="fw-bolder">Post TITLE</h5>
+                              <p>Post content</p>
+                              <a href="shop-detail.html"><p>Click to read more</p></a>
+                          </div>
+                      </div>
+                  </div>
+              </div>                
+          </div>
+      </div>
+  </section>
+
+
+    <p class="display-6 text-center">CREATE A NEW POST</p>
+    <div class="d-flex justify-content-center">
+        <form class="w-50">
+          <div class="form-group form-text fs-5 mt-2 mb-2">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title">
+          </div>
+          <div class="form-group form-text fs-5 mb-4">
+            <label for="post">What to post</label>
+            <textarea class="form-control" id="post" rows="3"></textarea>
+          </div>
+          <div>
+              <input type="file" class="form-control-file mb-2">
+              <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                <div class="text-center"><a class="btn btn-outline-primary mt-auto" href="#">POST</a></div>
+            </div>
+              </div>
+        </form>
+    </div>
+    <footer class="bg-primary text-center text-lg-start">
+        <!-- Copyright -->
+        <div class="text-center p-3">
+          © 2022 Copyright:
+          <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+        </div>
+        <!-- Copyright -->
+      </footer>
+</body>
+</html>

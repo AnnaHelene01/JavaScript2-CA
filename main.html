@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page for social application</title>
+    <link href="./css/style.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="./JavaScript/posts.js" defer></script>
+</head>
+<style>
+    .user-icon {
+      width: 50px;
+      height: 50px;
+    }
+   </style>
+<body>
+    <header> 
+        <nav class="navbar navbar-expand-lg bg-primary">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="index.html">LOGO</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="main.html">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="profile.html">Profile</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="index.html">Log out</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="explore.html">Explore profiles</a>
+                  </li>
+                </ul>
+                <form class="d-flex" role="search">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn text-white border" type="submit">Search</button>
+                </form>
+              </div>
+            </div>
+          </nav>
+    </header>
+    <div class="container mt-5 mb-5">
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <h1 class="display-3">Welcome</h1>
+            <h2 id="html-username"></h2>
+            <p class="display-5 text-primary">Keep in touch with</p>
+            <p class="display-5 text-primary">your friends and family!</p>
+            <p>Write your own posts and read about others lives!</p>
+            <div>
+                <button class="btn btn-primary">
+                  <a href="index.html" class="text-white text-decoration-none">LOG OUT</a>
+                </button>
+                <button class="btn btn-outline-primary"><a href="profile.html" class="text-decoration-none">PROFILE</a></button>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 mt-2">
+            <img src="/images/homepage-img.webp" alt="image of a girl holding a phone" class="img-responsive" style="width:100%">
+        </div>
+    </div>
+    </div>
+    <p class="display-6 text-center">CREATE A NEW POST</p>
+    <div class="d-flex justify-content-center">
+        <form class="w-50" id="create-container">
+          <div class="form-group form-text fs-5 mt-2 mb-2">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="postTitle">
+          </div>
+          <div class="form-group form-text fs-5 mb-4">
+            <label for="post">What to post</label>
+            <textarea class="form-control" id="postContent" rows="3"></textarea>
+          </div>
+          <div>
+              <input type="file" class="form-control-file mb-2">
+              <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                <div class="text-center"><a class="btn btn-outline-primary mt-auto" id="submitPost" href="#">POST</a></div>
+            </div>
+              </div>
+        </form>
+    </div>
+    <p class="display-5 text-center mt-6">POSTS</p>   
+    <div class="d-flex">
+       <div class="d-flex m-4">
+           <p>Trying to filter:</p>
+           <input id="queryString" class=""/>
+       </div>
+       <div class="d-flex m-4">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-primary border" type="submit">Search</button>
+    </div>
+    </div> 
+    <section class="py-5">
+      <div class="container px-4 px-lg-5 mt-1">
+          <div class="row gx-4 gx-lg-5 row-cols-1 row-cols-md-2 row-cols-xl-2 justify-content-center" id="post-container">
+          </div>
+      </div>
+  </section>
+    <footer class="bg-primary text-center text-lg-start">
+        <!-- Copyright -->
+        <div class="text-center p-3">
+          © 2022 Copyright:
+          <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+        </div>
+        <!-- Copyright -->
+      </footer>
+</body>
+</html>

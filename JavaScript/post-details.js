@@ -1,3 +1,4 @@
+
 //Henter div-en fra html hvor innholdet skal
 const outElement = document.getElementById("container");
 
@@ -6,6 +7,7 @@ const outElement = document.getElementById("container");
 const API_BASE_URL = "https://nf-api.onrender.com";
 const singlePostsEndpoint = '/api/v1/social/posts/';
 
+
 let params = new URLSearchParams(document.location.search);
 let id = params.get("id"); 
 
@@ -13,8 +15,10 @@ const getSinglePostsURL = `${API_BASE_URL}${singlePostsEndpoint}${id}`;
 //let posts = [];
 console.log(id);
 
+const postUrl = `${getSinglePostsURL}?_author=true`;
 
 async function getSinglePosts (url) {
+    const userUrl = `${postUrl}`;
     try {
         const accessToken = localStorage.getItem('accessToken'); 
         const options = {
@@ -36,7 +40,7 @@ async function getSinglePosts (url) {
     }
 }
 
-getSinglePosts(getSinglePostsURL);
+getSinglePosts(postUrl);
 
 
 //Liste ut alle poster på html siden
@@ -48,8 +52,9 @@ function listData(post, out){
           <div class="card h-100 ">
             <div class="card-body p-4">
                <div class="text-center ">
+                  <h1>${post.author.name}</h1>
                   <h2>${post.title}</h2>
-                  <p>From: ${post.body}</p>
+                  <p>${post.body}</p>
                   <img src="${post.media}" class="img-fluid">
                </div>
             </div>
@@ -57,3 +62,4 @@ function listData(post, out){
         </div>`;
     out.innerHTML = newDivs;
 }
+

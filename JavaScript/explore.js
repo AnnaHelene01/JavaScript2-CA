@@ -6,6 +6,7 @@ const allUsersEndpoint = '/api/v1/social/profiles';
 
 const getAllUsersURL = `${API_BASE_URL}${allUsersEndpoint}`;
 
+let collection = [];
 
 async function getAllUsers (url) {
     try {
@@ -21,9 +22,10 @@ async function getAllUsers (url) {
         const response = await fetch(url, options); 
         console.log(response);
         const users = await response.json();
-        //posts = posts.post;
+        collection = users;
+        console.log("Collection:", collection);
         console.log(users);
-        listData(users, outElement)
+        listData(users, outElement) 
     } catch(error) {
         console.warn(error);
     }
@@ -53,3 +55,26 @@ function listData(list, out){
     }
     out.innerHTML = newDivs;
 }
+
+    //Filtrere posts / search input
+    const inputField = document.getElementById("queryString");
+    inputField.addEventListener("keyup", filterUsers);
+
+    function filterUsers () {
+        const filterUsers = inputField.value.toLowerCase();
+        //console.log(filterUsers);
+
+        const filtered = collection.filter((user)=> {
+            //console.log(post.author.name, filterPosts);
+            //console.log(post.author.name.toUpperCase().indexOf(filterPosts.toUpperCase()) > -1);
+            //console.log(collection.length);
+            const name = user.name.toLowerCase();
+            const email = user.email.toLowerCase();
+            //console.log(name, email);
+            if (name.indexOf(filterUsers) > -1) return true;
+            if (email.indexOf(filterUsers) > -1) return true;
+            return false;
+        })
+
+        listData(filtered, outElement);
+    }

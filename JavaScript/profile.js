@@ -1,6 +1,6 @@
 //Legge til brukerens navn
 const welcome = localStorage.getItem('username');
-console.log(welcome);
+console.log("User logged in:", welcome);
 const userName = document.getElementById('user-name');
 
 userName.innerHTML = welcome;
@@ -23,15 +23,15 @@ async function getMyPosts (url) {
                 Authorization: `Bearer ${accessToken}`,
             }
         }
-        console.log(url, options);
+        //console.log(url, options);
 
         const response = await fetch(url, options); 
-        console.log(response);
+        //console.log(response);
         const profile = await response.json()
-        console.log("Profil: ", profile)
-        console.log("Profil > navn: ", profile.name)
-        console.log("Profil > epost: ", profile.email)
-        console.log("Posts:", profile.posts);
+        //console.log("Profil: ", profile)
+        //console.log("Profil > navn: ", profile.name)
+        //console.log("Profil > epost: ", profile.email)
+        //console.log("Posts:", profile.posts);
         const myOwnPosts = profile.posts
         listData(myOwnPosts, outElement)
     } catch(error) {
@@ -45,13 +45,13 @@ const outElement = document.getElementById("post-container");
 
 //Liste ut mine poster på html siden
 function listData(list, out){
-    console.log("List: ", list)
-    console.log("Out: ", out)
+    //console.log("List: ", list)
+    //console.log("Out: ", out)
     out.innerHTML = "";
     let newDivs = "";
 
     for (let post of list) {
-        console.log("Post: ", post);
+        //console.log("Post: ", post);
         const delBtn = `<button class="btnDelete btn btn-outline-primary" data-delete="${post.id}">DELETE</button>`;
         const updateBtn = `<button class="btnUpdate btn btn-primary text-white" data-update="${post.id}">UPDATE</button>`;
         newDivs += `<div class="col mb-5">

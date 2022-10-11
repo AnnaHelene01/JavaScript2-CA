@@ -59,7 +59,7 @@ function listData(list, out){
                   <div class="card-body p-4">
                       <div class="text-center">
                         <div class="d-flex">
-                           <div class="col-6">
+                           <div class="col-4">
                              <p><strong>@${post.owner}</strong></p>
                            </div>
                            <div class="col-6">
@@ -71,8 +71,8 @@ function listData(list, out){
                          <img src="${post.media}" class="img-fluid" alt="">
                          <a href="post-details.html?id=${post.id}"> <p>Click to read more</p></a>
                       <div>
-                        ${localStorage.getItem('username') === post.author.name ? delBtn : ""}
-                        ${localStorage.getItem('username') === post.author.name ? updateBtn : ""}
+                        ${localStorage.getItem('username') === post.owner ? delBtn : ""}
+                        ${localStorage.getItem('username') === post.owner ? updateBtn : ""}
                      </div>
                </div>
             </div>

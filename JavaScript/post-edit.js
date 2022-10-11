@@ -38,6 +38,13 @@ async function getSinglePosts (url) {
 
 getSinglePosts(getSinglePostsURL);
 
+const user = document.getElementById("user");
+const welcome = localStorage.getItem('username');
+const editTitle = document.getElementById("editTitle");
+const editContent = document.getElementById("editContent");
+const editMedia = document.getElementById("editMedia");
+const editBtn = document.getElementById("updatePost");
+
 
 //Liste ut alle poster på html siden
 function listData(post, out){
@@ -45,14 +52,9 @@ function listData(post, out){
     console.log ("List:", post);
     editTitle.innerHTML = `${post.title}`;
     editContent.innerHTML = `${post.body}`;
+    editMedia.innerHTML = `${post.media}`;
 }
 
-
-const user = document.getElementById("user");
-const editTitle = document.getElementById("editTitle");
-const editContent = document.getElementById("editContent");
-
-const welcome = localStorage.getItem('username');
 
 
 // UPDATE POST
@@ -60,6 +62,20 @@ const updateEndPoint = '/api/v1/social/posts/';
 const updateURL = `${API_BASE_URL}${updateEndPoint}`;
 
 async function updatePost (id) {
+    const data = {
+        title: editTitle.value.trim(),
+        body: editContent.value.trim(),
+    };
+
+    if (editMedia.value != "") {
+        const media = editMedia.value;
+        data["media"] = media;
+    } else {
+        delete data["media"];
+    }
+
+
+    console.log("Input data:", data);
     console.log(id);
     const upUrl = `${updateURL}${id}`;
      try {
@@ -84,10 +100,9 @@ async function updatePost (id) {
     }
 }
         
-const editBtn = document.getElementById("updatePost");
-
 editBtn.addEventListener("click", () => {
     console.log(id);
     updatePost(id);
     //window.location = `./main.html`;
 })
+

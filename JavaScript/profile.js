@@ -1,12 +1,18 @@
+//Legge til brukerens navn
+const welcome = localStorage.getItem('username');
+console.log(welcome);
+const userName = document.getElementById('user-name');
+
+userName.innerHTML = welcome;
+
 //Hente alle poster - method: GET
 // Endpoints
 const API_BASE_URL = "https://nf-api.onrender.com";
-const allPostsEndpoint = '/api/v1/social/posts?_author=true&_comments=true&_reactions=true';
+const allPostsEndpoint = '/api/v1/social/profiles/name?_posts=true';
 
 
 const getAllPostsURL = `${API_BASE_URL}${allPostsEndpoint}`;
 //let posts = [];
-let collection = [];
 
 async function getAllPosts (url) {
     try {
@@ -23,8 +29,6 @@ async function getAllPosts (url) {
         console.log(response);
         const posts = await response.json();
         console.log("Posts:", posts);
-        collection = posts;
-        console.log("Collection:", collection);
         listData(posts, outElement)
     } catch(error) {
         console.warn(error);
@@ -40,11 +44,6 @@ function listData(list, out){
     //console.log ("List:", list);
     out.innerHTML = "";
     let newDivs = "";
-
-    const welcome = localStorage.getItem('username');
-    const htmlUsername = document.getElementById('html-username');
-
-    htmlUsername.innerHTML = welcome;
 
     for (let post of list) {
         //console.log(card);
@@ -75,54 +74,31 @@ function listData(list, out){
           </div>
         </div>`;
     }
-    out.innerHTML = newDivs;
-    //Delete posts
-    const btns = document.querySelectorAll("button.btnDelete");
-    //console.log(btns);
-    for (let btnDelete of btns){
-         btnDelete.addEventListener("click", () => {
-            console.log(btnDelete.getAttribute('data-delete'));
-            if ( confirm('Are you totally sure?')){
-                deletePost(btnDelete.getAttribute('data-delete'));
-            }
-      }) 
+    //if (${localStorage.getItem('username') === post.author.name}) {
+        out.innerHTML = newDivs;
     }
-    //Update posts
-    const updatebtns = document.querySelectorAll("button.btnUpdate");
-    //console.log(updatebtns);
-    for (let btnUpdate of updatebtns) {
-        btnUpdate.addEventListener("click", () => {
-            console.log(btnUpdate.getAttribute('data-update'));
-            const updateId = btnUpdate.getAttribute('data-update');
-            window.location =`./post-edit.html?id=${updateId}`;
-        })
-    }
+
+        //Delete posts
+        const btns = document.querySelectorAll("button.btnDelete");
+        //console.log(btns);
+        for (let btnDelete of btns){
+             btnDelete.addEventListener("click", () => {
+                console.log(btnDelete.getAttribute('data-delete'));
+                if ( confirm('Are you totally sure?')){
+                    deletePost(btnDelete.getAttribute('data-delete'));
+                }
+          }) 
+        }
+        //Update posts
+        const updatebtns = document.querySelectorAll("button.btnUpdate");
+        //console.log(updatebtns);
+        for (let btnUpdate of updatebtns) {
+            btnUpdate.addEventListener("click", () => {
+                console.log(btnUpdate.getAttribute('data-update'));
+                const updateId = btnUpdate.getAttribute('data-update');
+                window.location =`./post-edit.html?id=${updateId}`;
+            })
 }
-
-    //Filtrere posts / search input
-    const inputField = document.getElementById("queryString");
-    inputField.addEventListener("keyup", filterPosts);
-
-    function filterPosts () {
-        const filterPosts = inputField.value.toLowerCase();
-        //console.log(filterPosts);
-
-        const filtered = collection.filter((post)=> {
-            //console.log(post.author.name, filterPosts);
-            //console.log(post.author.name.toUpperCase().indexOf(filterPosts.toUpperCase()) > -1);
-            console.log(collection.length);
-            const author = post.author.name.toLowerCase();
-            const title = post.title.toLowerCase();
-            const published = post.created.toString();
-            //console.log(author, title, published);
-            if (author.indexOf(filterPosts) > -1) return true;
-            if (title.indexOf(filterPosts) > -1) return true;
-            if (published.indexOf(filterPosts) > -1) return true;
-            return false;
-        })
-
-        listData(filtered, outElement);
-    }
 
 
 // DELETE POST
@@ -152,17 +128,6 @@ async function deletePost (id) {
          console.warn(error);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 //Hente create post verdier:
 const form = document.getElementById("create-container");
@@ -210,3 +175,7 @@ submitPost.addEventListener("click", () => {
     
        createNewPost(createPost);
 });
+
+
+
+

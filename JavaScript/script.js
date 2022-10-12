@@ -45,7 +45,7 @@ function validateForm() {
             submittedEmail.includes("@noroff.no") 
         )
      ) {
-        emailMsg.innerHTML += "Email must include @stud.noroff.no or @noroff.no"
+        emailMsg.innerHTML += "Email must include @stud.noroff.no or @noroff.no";
      }
      
     const submittedPassword = password;

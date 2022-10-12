@@ -56,7 +56,12 @@ function listData(list, out){
         const updateBtn = `<button class="btnUpdate btn btn-primary text-white" data-update="${post.id}">UPDATE</button>`;
 
         let date = new Date(post.created);
-        let ourDate = date.toLocaleString("default", {day: "numeric", month: "long", hour: "2-digit", minute: "2-digit"});
+        let ourDate = date.toLocaleString("default", {
+            day: "numeric", 
+            month: "long", 
+            hour: "2-digit", 
+            minute: "2-digit"
+        });
 
         newDivs += `<div class="col mb-5">
                <div class="card h-100">

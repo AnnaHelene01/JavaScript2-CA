@@ -47,12 +47,22 @@ getSinglePosts(postUrl);
 function listData(post, out){
     console.log ("List:", post);
     out.innerHTML = "";
+    
+    let date = new Date(post.created);
+    let ourDate = date.toLocaleString("default", {
+        day: "numeric", 
+        month: "long", 
+        hour: "2-digit", 
+        minute: "2-digit"
+    });
+
     let newDivs = "";
         newDivs += `<div class="col-6 mb-5 m-auto">
           <div class="card h-100 ">
             <div class="card-body p-4">
                <div class="text-center ">
                   <h1 class="text-primary">@${post.author.name}</h1>
+                  <p>Posted: ${ourDate}</p>
                   <h3>${post.title}</h3>
                   <p>${post.body}</p>
                   <img src="${post.media}" class="img-fluid">

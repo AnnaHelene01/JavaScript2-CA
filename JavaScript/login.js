@@ -23,7 +23,11 @@ function validateForm() {
      let emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
      if (!emailPattern.test(submittedEmail)) {
      emailMsg.innerHTML += "Please enter a valid email";
+     } if (submittedEmail !== localStorage.getItem("email")){
+        emailMsg.innerHTML = "This email does not exist! Please register";
      }
+
+    
      
     const submittedPassword = password;
     if (submittedPassword.length < 8) {

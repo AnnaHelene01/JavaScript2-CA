@@ -83,6 +83,8 @@ function validateAndProcess(event) {
     }
     console.log(newUserData);
 
+    localStorage.setItem("email", email);
+
     registerNewUser(registerUrl, newUserData);
 };
 

@@ -26,8 +26,9 @@ function validateForm() {
     if (submittedName.length < 2) {
         usernameMsg.innerHTML += 'The name must be at least 2 characters long!';
     }
-    if (/\d/.test(submittedName)) { // And make sure it don't contain any digits
-        usernameMsg.innerHTML += "The name cannot contain any digits! ";
+    let usernamePattern = /^[A-Za-z0-9_]+$/;
+    if (!usernamePattern.test(submittedName)) { // And make sure it don't contain any digits
+        usernameMsg.innerHTML += "The name can only contain characters, digits and underscore! ";
       }
 
     const submittedEmail = email;
@@ -84,6 +85,7 @@ function validateAndProcess(event) {
     console.log(newUserData);
 
     localStorage.setItem("email", email);
+
 
     registerNewUser(registerUrl, newUserData);
 };

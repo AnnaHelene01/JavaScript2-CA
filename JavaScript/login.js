@@ -25,7 +25,7 @@ function validateForm() {
      emailMsg.innerHTML += "Please enter a valid email";
      } if (submittedEmail !== localStorage.getItem("email")){
         emailMsg.innerHTML = "This email does not exist! Please register";
-     }
+     } 
 
     
      

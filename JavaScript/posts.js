@@ -158,15 +158,6 @@ async function deletePost (id) {
 
 
 
-
-
-
-
-
-
-
-
-
 //Hente create post verdier:
 const form = document.getElementById("create-container");
 const postTitle = document.getElementById("postTitle");
@@ -179,10 +170,15 @@ const submitPost = document.getElementById("submitPost");
 const createPost = `${API_BASE_URL}${allPostsEndpoint}`;
 
 async function createNewPost (url, data) {
+    const title = postTitle.value.trim();
+    const body = postContent.value.trim();
+    let media = postMedia.value.trim();
+    if (media === "") media = "https://www.pngkey.com/maxpic/u2w7r5y3a9o0w7t4/";
+
     const postData = {
-        title: postTitle.value.trim(),
-        body: postContent.value.trim(),
-        media: postMedia.value.trim(),
+        title: title,
+        body: body,
+        media: media,
        };
 
     try {
@@ -210,6 +206,48 @@ async function createNewPost (url, data) {
 //createNewPost(createPost);
 
 submitPost.addEventListener("click", () => {
-    
+      
        createNewPost(createPost);
+    
 });
+
+
+
+//Hente p taggene for å skrive ut beskjed ved validering
+const titleMsg = document.getElementById("titleMsg");
+const bodyMsg = document.getElementById("bodyMsg");
+const mediaMsg = document.getElementById("mediaMsg");
+
+console.log(titleMsg, bodyMsg, mediaMsg);
+
+//Validate form 
+submitPost.addEventListener('click', validateForm);
+function validateForm() {
+    const title = postTitle.value.trim();
+    const body = postContent.value.trim();
+    const media = postMedia.value.trim();
+
+    const submittedTitle = title;
+    titleMsg.innerHTML = "";
+     if (submittedTitle.length < 1) {
+     titleMsg.innerHTML = 'Your title has to be at least 1 or more characters.';
+     }
+     
+    const submittedBody = body;
+    if (submittedBody.length < 1) {
+        bodyMsg.innerHTML = 'Your title has to be at least 1 or more characters.';
+    }
+
+    const submittedMedia = media;
+    if (submittedMedia === "") {
+        mediaMsg.innerHTML = 'You must add a real URL';
+    }
+
+      if (titleMsg.innerHTML === "" && bodyMsg.innerHTML === "" && mediaMsg.innerHTML === "") {
+        console.log("Form is submitted!");
+        //form.submit(); ///for å submitte skjema 
+     }
+     else {
+        console.log("You still have validation errors");
+    }
+}

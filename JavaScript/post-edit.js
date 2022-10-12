@@ -62,14 +62,19 @@ const updateEndPoint = '/api/v1/social/posts/';
 const updateURL = `${API_BASE_URL}${updateEndPoint}`;
 
 async function updatePost (id) {
-    const data = {
-        title: editTitle.value.trim(),
-        body: editContent.value.trim(),
-    };
+    const title = editTitle.value.trim();
+    const body = editContent.value.trim();
+    let media = editMedia.value.trim();
+    if (media === "") media = "https://www.pngkey.com/maxpic/u2w7r5y3a9o0w7t4/";
 
-    if (editMedia.value != "") {
-      delete editMedia;  
-    } 
+    const data = {
+        title: title,
+        body: body,
+        media: media,
+       };
+
+
+
 
 
     console.log("Input data:", data);

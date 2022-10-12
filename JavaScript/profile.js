@@ -53,7 +53,7 @@ function listData(list, out){
     for (let post of list) {
         //console.log("Post: ", post);
         const delBtn = `<button class="btnDelete btn btn-outline-primary" data-delete="${post.id}">DELETE</button>`;
-        const updateBtn = `<button class="btnUpdate btn btn-primary text-white mt-2" data-update="${post.id}">UPDATE</button>`;
+        const updateBtn = `<button class="btnUpdate btn btn-primary text-white" data-update="${post.id}">UPDATE</button>`;
         newDivs += `<div class="col mb-5">
                <div class="card h-100">
                   <div class="card-body p-4">
@@ -182,4 +182,41 @@ submitPost.addEventListener("click", () => {
 });
 
 
+//Hente p taggene for å skrive ut beskjed ved validering
+const titleMsg = document.getElementById("titleMsg");
+const bodyMsg = document.getElementById("bodyMsg");
+const mediaMsg = document.getElementById("mediaMsg");
 
+console.log(titleMsg, bodyMsg, mediaMsg);
+
+//Validate form 
+submitPost.addEventListener('click', validateForm);
+function validateForm() {
+    const title = postTitle.value.trim();
+    const body = postContent.value.trim();
+    const media = postMedia.value.trim();
+
+    const submittedTitle = title;
+    titleMsg.innerHTML = "";
+     if (submittedTitle.length < 1) {
+     titleMsg.innerHTML = 'Your title has to be at least 1 or more characters.';
+     }
+     
+    const submittedBody = body;
+    if (submittedBody.length < 1) {
+        bodyMsg.innerHTML = 'Your title has to be at least 1 or more characters.';
+    }
+
+    const submittedMedia = media;
+    if (submittedMedia === "") {
+        mediaMsg.innerHTML = 'You must add a real URL';
+    }
+
+      if (titleMsg.innerHTML === "" && bodyMsg.innerHTML === "" && mediaMsg.innerHTML === "") {
+        console.log("Form is submitted!");
+        //form.submit(); ///for å submitte skjema 
+     }
+     else {
+        console.log("You still have validation errors");
+    }
+}

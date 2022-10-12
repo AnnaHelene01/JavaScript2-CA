@@ -52,8 +52,8 @@ function listData(post, out){
           <div class="card h-100 ">
             <div class="card-body p-4">
                <div class="text-center ">
-                  <h1>${post.author.name}</h1>
-                  <h2>${post.title}</h2>
+                  <h1 class="text-primary">@${post.author.name}</h1>
+                  <h3>${post.title}</h3>
                   <p>${post.body}</p>
                   <img src="${post.media}" class="img-fluid">
                </div>

@@ -20,7 +20,7 @@
     <header> 
         <nav class="navbar navbar-expand-lg bg-primary">
             <div class="container-fluid">
-              <a class="navbar-brand" href="index.html">BRØNNØY</a>
+              <a class="navbar-brand text-white" href="index.html">BuzzIt</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -63,32 +63,29 @@
         </div>
     </div>
     </div>
+    <div class="col-6 mb-5 d-flex mx-auto">
+            <input class="ms-3 col-6 mx-auto p-2 form-control" id="queryString" placeholder="Search"/>
+     </div> 
     <section class="container">
     <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12">
-        <div class="d-flex">
-            <div class="d-flex m-auto">
-                <p>Trying to filter:</p>
-                <input id="queryString" class=""/>
-            </div>
-         </div> 
+    <div class="col-lg-6 col-md-6 col-sm-12 mb-5">
         <p class="display-6 text-center">CREATE A NEW POST</p>
         <div class="d-flex justify-content-center">
-            <form class="w-50" id="create-container">
-              <div class="form-group form-text fs-5 mt-2 mb-2">
-                <label for="title">Title</label>
-                <input type="text" class="form-control" id="postTitle">
+            <form class="w-75" id="create-container">
+              <div class="form-group form-text mt-2 mb-2">
+                <p id="titleMsg"></p>
+                <input type="text" class="form-control" id="postTitle" placeholder="Title">
               </div>
-              <div class="form-group form-text fs-5 mb-4">
-                <label for="post">What to post</label>
-                <textarea class="form-control" id="postContent" rows="3"></textarea>
+              <div class="form-group form-text mb-2">
+                <p id="bodyMsg" class=""></p>
+                <textarea class="form-control" id="postContent" placeholder="What to post?"></textarea>
               </div>
               <div>
-                <div class="form-group form-text fs-5 mb-4">
-                    <label for="media">Place a image URL</label>
-                    <textarea class="form-control" id="post-media" rows="3"></textarea>
+                <div class="form-group form-text mb-2">
+                    <p id="mediaMsg" class=""></p>
+                    <textarea class="form-control" id="post-media" placeholder="Place a image URL"></textarea>
                   </div> 
-                  <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                  <div class="card-footer p-3 pt-0 border-top-0 bg-transparent">
                     <div class="text-center"><a class="btn btn-outline-primary mt-auto" id="submitPost" href="#">POST</a></div>
                 </div>
                   </div>
@@ -102,8 +99,6 @@
             </div>
         </div>
     </div>
-    
-
     </div>
     </section>
     <footer class="bg-primary text-center text-lg-start">

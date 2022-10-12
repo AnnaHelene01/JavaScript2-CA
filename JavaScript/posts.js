@@ -55,7 +55,8 @@ function listData(list, out){
                   <div class="card-body p-4">
                       <div class="text-center">
                         <div class="d-flex">
-                           <div class="col-6">
+                           <div class="col-6 d-flex">
+                             <img src="./images/icons8-circled-user-female-skin-type-6-30.png" class="user-icon" alt="user">
                              <p><strong>@${post.author.name}</strong></p>
                            </div>
                            <div class="col-6">

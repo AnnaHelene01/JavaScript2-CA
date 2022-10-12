@@ -82,6 +82,11 @@ function listData(list, out){
     }
     //if (${localStorage.getItem('username') === post.author.name}) { }
         out.innerHTML = newDivs;
+        const noPostMsg = document.getElementById("noPostMsg");
+        if(list.length == 0) {
+            console.log("You have no posts yet!");
+            //noPostMsg.innerHTML = "You have no posts yet!";
+        }
 
 
         //Delete posts

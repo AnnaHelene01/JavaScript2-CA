@@ -56,6 +56,22 @@ function listData(post, out){
 }
 
 
+const imgUpload = document.getElementById("imgUpload");
+console.log(imgUpload);
+
+
+editMedia.addEventListener("keyup", () => {
+    const url = editMedia.value.trim();
+    console.log(url);
+    if (url !== "") {
+        imgUpload.innerHTML = `<img src="${url}" alt="preview" class="col-12 img-responsive">`
+    } else {
+        imgUpload.innerHTML = "URL is empty"
+    }
+})
+
+
+
 
 // UPDATE POST
 const updateEndPoint = '/api/v1/social/posts/'; 
@@ -72,10 +88,6 @@ async function updatePost (id) {
         body: body,
         media: media,
        };
-
-
-
-
 
     console.log("Input data:", data);
     console.log(id);
@@ -107,4 +119,5 @@ editBtn.addEventListener("click", () => {
     updatePost(id);
     //window.location = `./main.html`;
 })
+
 

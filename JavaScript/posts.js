@@ -50,6 +50,10 @@ function listData(list, out){
         //console.log(card);
         const delBtn = `<button class="btnDelete btn btn-outline-primary" data-delete="${post.id}">DELETE</button>`;
         const updateBtn = `<button class="btnUpdate btn btn-primary text-white " data-update="${post.id}">UPDATE</button>`;
+
+        let date = new Date(post.created);
+        let ourDate = date.toLocaleString("default", {day: "numeric", month: "long", hour: "2-digit", minute: "2-digit"});
+
         newDivs += `<div class="col mb-5">
                <div class="card h-100">
                   <div class="card-body p-4">
@@ -60,7 +64,7 @@ function listData(list, out){
                              <p><strong>@${post.author.name}</strong></p>
                            </div>
                            <div class="col-6">
-                             <p>${post.created}</p>
+                             <p>${ourDate}</p>
                            </div>
                         </div>
                          <h2>${post.title}</h2>
@@ -204,12 +208,8 @@ async function createNewPost (url, data) {
     }
 }
 
-//createNewPost(createPost);
-
 submitPost.addEventListener("click", () => {
-      
        createNewPost(createPost);
-    
 });
 
 

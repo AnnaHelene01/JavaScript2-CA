@@ -37,6 +37,16 @@ function validateForm() {
      if (!emailPattern.test(submittedEmail)) {
      emailMsg.innerHTML += "Please enter a valid email";
      }
+     //validere sjekk etter @noroff.no & @stud.noroff.no
+
+     if (
+        !(
+            submittedEmail.includes("@stud.noroff.no") ||
+            submittedEmail.includes("@noroff.no") 
+        )
+     ) {
+        emailMsg.innerHTML += "Email must include @stud.noroff.no or @noroff.no"
+     }
      
     const submittedPassword = password;
     if (submittedPassword.length < 8) {

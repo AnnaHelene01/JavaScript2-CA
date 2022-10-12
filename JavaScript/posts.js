@@ -17,14 +17,14 @@ async function getAllPosts (url) {
                 Authorization: `Bearer ${accessToken}`,
             }
         }
-        console.log(url, options);
+        //console.log(url, options);
 
         const response = await fetch(url, options); 
-        console.log(response);
+        //console.log(response);
         const posts = await response.json();
-        console.log("Posts:", posts);
+        //console.log("Posts:", posts);
         collection = posts;
-        console.log("Collection:", collection);
+        //console.log("Collection:", collection);
         listData(posts, outElement)
     } catch(error) {
         console.warn(error);
@@ -94,7 +94,7 @@ function listData(list, out){
     //console.log(btns);
     for (let btnDelete of btns){
          btnDelete.addEventListener("click", () => {
-            console.log(btnDelete.getAttribute('data-delete'));
+            //console.log(btnDelete.getAttribute('data-delete'));
             if ( confirm('Are you totally sure?')){
                 deletePost(btnDelete.getAttribute('data-delete'));
             }
@@ -105,7 +105,7 @@ function listData(list, out){
     //console.log(updatebtns);
     for (let btnUpdate of updatebtns) {
         btnUpdate.addEventListener("click", () => {
-            console.log(btnUpdate.getAttribute('data-update'));
+            //console.log(btnUpdate.getAttribute('data-update'));
             const updateId = btnUpdate.getAttribute('data-update');
             window.location =`./post-edit.html?id=${updateId}`;
         })
@@ -123,7 +123,7 @@ function listData(list, out){
         const filtered = collection.filter((post)=> {
             //console.log(post.author.name, filterPosts);
             //console.log(post.author.name.toUpperCase().indexOf(filterPosts.toUpperCase()) > -1);
-            console.log(collection.length);
+            //console.log(collection.length);
             const author = post.author.name.toLowerCase();
             const title = post.title.toLowerCase();
             const published = post.created.toString();
@@ -143,7 +143,7 @@ const deleteEndPoint = '/api/v1/social/posts/';
 const deleteURL = `${API_BASE_URL}${deleteEndPoint}`;
 
 async function deletePost (id) {
-    console.log(id);
+    //console.log(id);
     const url = `${deleteURL}${id}`;
      try {
         const accessToken = localStorage.getItem('accessToken'); 
@@ -154,12 +154,12 @@ async function deletePost (id) {
                 Authorization: `Bearer ${accessToken}`,
             },
         };
-        console.log(url, options);
+        //console.log(url, options);
 
         const response = await fetch(url, options); 
-        console.log(response);
+        //console.log(response);
         const posts = await response.json();
-        console.log(posts);
+        //console.log(posts);
         if (response.status === 200) window.location = './main.html';
     } catch(error) {
          console.warn(error);
@@ -201,12 +201,12 @@ async function createNewPost (url, data) {
             },
             body: JSON.stringify(postData),
         };
-        console.log(url, data, options);
+        //console.log(url, data, options);
 
         const response = await fetch(url, options); 
-        console.log(response);
+        //console.log(response);
         const posts = await response.json();
-        console.log(posts);
+        //console.log(posts);
     if (response.status === 200) window.location='./main.html';
     } catch(error) {
         console.warn(error);
@@ -224,7 +224,7 @@ const titleMsg = document.getElementById("titleMsg");
 const bodyMsg = document.getElementById("bodyMsg");
 const mediaMsg = document.getElementById("mediaMsg");
 
-console.log(titleMsg, bodyMsg, mediaMsg);
+//console.log(titleMsg, bodyMsg, mediaMsg);
 
 //Validate form 
 submitPost.addEventListener('click', validateForm);
@@ -239,18 +239,20 @@ function validateForm() {
      titleMsg.innerHTML = 'Your title has to be at least 1 or more characters.';
      }
      
+     bodyMsg.innerHTML = "";
     const submittedBody = body;
     if (submittedBody.length < 1) {
         bodyMsg.innerHTML = 'Your title has to be at least 1 or more characters.';
     }
 
+    mediaMsg.innerHTML = "";
     const submittedMedia = media;
     if (submittedMedia === "") {
         mediaMsg.innerHTML = 'You must add a real URL';
     }
 
       if (titleMsg.innerHTML === "" && bodyMsg.innerHTML === "" && mediaMsg.innerHTML === "") {
-        console.log("Form is submitted!");
+        //console.log("Form is submitted!");
         //form.submit(); ///for å submitte skjema 
      }
      else {

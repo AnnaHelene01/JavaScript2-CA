@@ -6,7 +6,7 @@ const emailInput = document.querySelector("input#inputEmail");
 const passwordInput = document.querySelector("input#inputPassword");
 const submitButton = document.querySelector("button#submitBtn")
 
-console.log(form, usernameInput, emailInput, passwordInput, submitButton);
+//console.log(form, usernameInput, emailInput, passwordInput, submitButton);
 
 
 //Hente p taggene for å skrive ut beskjed ved validering
@@ -21,8 +21,9 @@ function validateForm() {
     const email = emailInput.value.trim();
     const password = passwordInput.value.trim();
 
+    usernameMsg.innerHTML = "";
     const submittedName = username;
-    console.log('Name: ' + submittedName);
+    //console.log('Name: ' + submittedName);
     if (submittedName.length < 2) {
         usernameMsg.innerHTML += 'The name must be at least 2 characters long!';
     }
@@ -31,8 +32,9 @@ function validateForm() {
         usernameMsg.innerHTML += "The name can only contain characters, digits and underscore! ";
       }
 
+    emailMsg.innerHTML = "";
     const submittedEmail = email;
-     console.log('Email: ' + submittedEmail);
+     //console.log('Email: ' + submittedEmail);
      let emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
      if (!emailPattern.test(submittedEmail)) {
      emailMsg.innerHTML += "Please enter a valid email";
@@ -48,13 +50,14 @@ function validateForm() {
         emailMsg.innerHTML += "Email must include @stud.noroff.no or @noroff.no";
      }
      
+    passwordMsg.innerHTML = "";
     const submittedPassword = password;
     if (submittedPassword.length < 8) {
         passwordMsg.innerHTML += 'The password must be at least 5 characters long!';
     }
 
       if (usernameMsg.innerHTML === "" && emailMsg.innerHTML === "" && passwordMsg.innerHTML === "") {
-        console.log("Form is submitted!");
+        //console.log("Form is submitted!");
         //form.submit(); ///for å submitte skjema 
      }
      else {
@@ -74,7 +77,7 @@ submitButton.addEventListener("click", validateAndProcess)
 
 function validateAndProcess(event) {    
     event.preventDefault();
-    console.log("You've pressed submit bro");
+    //console.log("You've pressed submit bro");
 
 
     /**
@@ -92,9 +95,8 @@ function validateAndProcess(event) {
         email: email,
         password: password,
     }
-    console.log(newUserData);
+    //console.log(newUserData);
 
-    localStorage.setItem("email", email);
 
 
     registerNewUser(registerUrl, newUserData);
@@ -109,11 +111,11 @@ async function registerNewUser(url, data) {
             },
             body: JSON.stringify(data),
         };
-        console.log(url, data, options)
+        //console.log(url, data, options)
         const response = await fetch (url, options);
-        console.log(response);
+        //console.log(response);
         const answer = await response.json();
-        console.log(answer);
+        //console.log(answer);
         if (response.status === 201) {
             window.location = "/index.html";
         } else if (answer.message === "Profile already exists") {

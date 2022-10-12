@@ -13,7 +13,7 @@ let id = params.get("id");
 
 const getSinglePostsURL = `${API_BASE_URL}${singlePostsEndpoint}${id}`;
 //let posts = [];
-console.log(id);
+//console.log(id);
 
 const postUrl = `${getSinglePostsURL}?_author=true`;
 
@@ -27,12 +27,12 @@ async function getSinglePosts (url) {
                 Authorization: `Bearer ${accessToken}`,
             }
         }
-        console.log(url, options);
+        //console.log(url, options);
 
         const response = await fetch(url, options); 
-        console.log(response);
+        //console.log(response);
         const post = await response.json();
-        console.log(post);
+        //console.log(post);
         listData(post, outElement)
     } catch(error) {
         console.warn(error);
@@ -45,7 +45,7 @@ getSinglePosts(postUrl);
 
 //Liste ut alle poster på html siden
 function listData(post, out){
-    console.log ("List:", post);
+    //console.log ("List:", post);
     out.innerHTML = "";
     
     let date = new Date(post.created);

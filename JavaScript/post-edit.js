@@ -11,7 +11,7 @@ let id = params.get("id");
 
 const getSinglePostsURL = `${API_BASE_URL}${singlePostsEndpoint}${id}`;
 //let posts = [];
-console.log(id);
+//console.log(id);
 
 
 async function getSinglePosts (url) {
@@ -23,12 +23,12 @@ async function getSinglePosts (url) {
                 Authorization: `Bearer ${accessToken}`,
             }
         }
-        console.log(url, options);
+        //console.log(url, options);
 
         const response = await fetch(url, options); 
-        console.log(response);
+        //console.log(response);
         const post = await response.json();
-        console.log(post);
+        //console.log(post);
         listData(post, outElement)
     } catch(error) {
         console.warn(error);
@@ -49,7 +49,7 @@ const editBtn = document.getElementById("updatePost");
 //Liste ut alle poster på html siden
 function listData(post, out){
     user.innerHTML = "@" + welcome;
-    console.log ("List:", post);
+    //console.log ("List:", post);
     editTitle.innerHTML = `${post.title}`;
     editContent.innerHTML = `${post.body}`;
     editMedia.innerHTML = `${post.media}`;
@@ -57,12 +57,12 @@ function listData(post, out){
 
 
 const imgUpload = document.getElementById("imgUpload");
-console.log(imgUpload);
+//console.log(imgUpload);
 
 
 editMedia.addEventListener("keyup", () => {
     const url = editMedia.value.trim();
-    console.log(url);
+    //console.log(url);
     if (url !== "") {
         imgUpload.innerHTML = `<img src="${url}" alt="preview" class="col-12 img-responsive">`
     } else {
@@ -89,8 +89,8 @@ async function updatePost (id) {
         media: media,
        };
 
-    console.log("Input data:", data);
-    console.log(id);
+    //console.log("Input data:", data);
+    //console.log(id);
     const upUrl = `${updateURL}${id}`;
      try {
         const accessToken = localStorage.getItem('accessToken'); 
@@ -102,12 +102,12 @@ async function updatePost (id) {
             },
             body: JSON.stringify(data),
         };
-        console.log(upUrl, options);
+        //console.log(upUrl, options);
 
         const response = await fetch(upUrl, options); 
-        console.log(response);
+        //console.log(response);
         const posts = await response.json();
-        console.log(posts);
+        //console.log(posts);
         if (response.status === 200) window.location = './main.html';
     } catch(error) {
          console.warn(error);
@@ -115,7 +115,7 @@ async function updatePost (id) {
 }
         
 editBtn.addEventListener("click", () => {
-    console.log(id);
+    //console.log(id);
     updatePost(id);
     //window.location = `./main.html`;
 })

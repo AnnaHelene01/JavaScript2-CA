@@ -5,7 +5,7 @@ const emailLogin = document.querySelector("input#loginEmail");
 const passwordLogin = document.querySelector("input#loginPassword");
 const submitButton = document.querySelector("button#submitBtn")
 
-console.log(form, emailLogin, passwordLogin, submitButton);
+//console.log(form, emailLogin, passwordLogin, submitButton);
 
 
 //Hente p taggene for å skrive ut beskjed ved validering
@@ -19,7 +19,7 @@ function validateForm() {
     const password = passwordLogin.value.trim();
 
     const submittedEmail = email;
-     console.log('Email: ' + submittedEmail);
+     //console.log('Email: ' + submittedEmail);
      let emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
      if (!emailPattern.test(submittedEmail)) {
      emailMsg.innerHTML += "Please enter a valid email";
@@ -33,7 +33,7 @@ function validateForm() {
     }
 
       if (emailMsg.innerHTML === "" && passwordMsg.innerHTML === "") {
-        console.log("Form is submitted!");
+        //console.log("Form is submitted!");
         //form.submit(); ///for å submitte skjema 
      }
      else {
@@ -52,7 +52,7 @@ submitButton.addEventListener("click", validateAndProcess)
 
 function validateAndProcess(event) {    
     event.preventDefault();
-    console.log("You've pressed submit bro");
+    //console.log("You've pressed submit bro");
     /**
      * 
      * @param {string} url URL to API endpoint
@@ -66,7 +66,7 @@ function validateAndProcess(event) {
         email: email,
         password: password,
     }
-    console.log(loginData);
+    //console.log(loginData);
 
     loginUser(loginUrl, loginData);
 };
@@ -80,12 +80,12 @@ async function loginUser(url, data) {
             },
             body: JSON.stringify(data),
         };
-        console.log(url, data, options)
+        //console.log(url, data, options)
 
         const response = await fetch (url, options);
-        console.log(response);
+        //console.log(response);
         const answer = await response.json();
-        console.log(answer);
+        //console.log(answer);
         if (response.status === 200) {
             localStorage.setItem('username', answer.name);
             localStorage.setItem('accessToken', answer.accessToken);

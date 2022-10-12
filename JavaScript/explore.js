@@ -17,14 +17,14 @@ async function getAllUsers (url) {
                 Authorization: `Bearer ${accessToken}`,
             }
         }
-        console.log(url, options);
+        //console.log(url, options);
 
         const response = await fetch(url, options); 
-        console.log(response);
+        //console.log(response);
         const users = await response.json();
         collection = users;
-        console.log("Collection:", collection);
-        console.log(users);
+        //console.log("Collection:", collection);
+        //console.log(users);
         listData(users, outElement) 
     } catch(error) {
         console.warn(error);

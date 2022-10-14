@@ -5,6 +5,10 @@ const userName = document.getElementById('user-name');
 
 userName.innerHTML = welcome;
 
+//Hente brukernavn til BIO:
+const profileBio = document.getElementById("profile-bio");
+profileBio.innerHTML = `Hei, jeg heter ${welcome}. Dette er min profil! Håper du liker postene mine.`;
+
 //Hente alle poster - method: GET
 // Endpoints
 const API_BASE_URL = "https://nf-api.onrender.com";
@@ -89,12 +93,11 @@ function listData(list, out){
           </div>
         </div>`;
     }
-    //if (${localStorage.getItem('username') === post.author.name}) { }
         out.innerHTML = newDivs;
-        const noPostMsg = document.getElementById("noPostMsg");
         if(list.length == 0) {
-            console.log("You have no posts yet!");
-            //noPostMsg.innerHTML = "You have no posts yet!";
+            //console.log("You have no posts yet!");
+            const noPostMsg = document.getElementById("noPostMsg");
+            noPostMsg.innerHTML = "You have no posts yet!";
         }
 
 
@@ -241,3 +244,5 @@ function validateForm() {
         console.log("You still have validation errors");
     }
 }
+
+

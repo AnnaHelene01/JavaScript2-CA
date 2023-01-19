@@ -56,7 +56,7 @@ function listData(list, out){
 
     for (let post of list) {
         //console.log("Post: ", post);
-        const delBtn = `<button class="btnDelete btn btn-outline-primary" data-delete="${post.id}">DELETE</button>`;
+        const delBtn = `<button class="btnDelete btn btn-primary text-white" data-delete="${post.id}">DELETE</button>`;
         const updateBtn = `<button class="btnUpdate btn btn-primary text-white" data-update="${post.id}">UPDATE</button>`;
 
         let date = new Date(post.created);

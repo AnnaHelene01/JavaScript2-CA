@@ -22,6 +22,6 @@ User can update a post content item
 User can delete a post content item
 
 ## Links
-GITHUB: ("https://github.com/AnnaHelene01/JavaScript2-CA")
-NETLIFY: ("https://buzz-it.netlify.app/")
-FIGMA: ("https://www.figma.com/file/n3FmggBo6n9IJUMWyPKbHv/CSS-Framework-CA?node-id=0%3A1&t=0W7xIrALNEwIQdzO-1")
+- GITHUB: ("https://github.com/AnnaHelene01/JavaScript2-CA")
+- NETLIFY: ("https://buzz-it.netlify.app/")
+- FIGMA: ("https://www.figma.com/file/n3FmggBo6n9IJUMWyPKbHv/CSS-Framework-CA?node-id=0%3A1&t=0W7xIrALNEwIQdzO-1")
